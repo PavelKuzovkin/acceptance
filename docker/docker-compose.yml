@@ -2,6 +2,36 @@ version: '3.4'
 
 services:
 
+  main-nginx:
+    container_name: main-nginx
+    image: nginx
+    restart: always
+    depends_on:
+      - postgres
+    ports:
+      - "0.0.0.0:80:80"
+      - "0.0.0.0:443:443"
+    volumes:
+      - ./conf/backend.conf:/etc/nginx/conf.d/backend.conf
+    networks:
+      - backend
+
+  backend:
+    container_name: backend
+    image: backend:latest
+    restart: always
+    depends_on:
+      - postgres
+    environment:
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: 5432
+      POSTGRES_USER: postgres
+      POSTGRES_PASS: 12345
+#    ports:
+#      - 80:8080
+    networks:
+      - backend
+
   postgres:
     image: postgres:latest
     restart: always
@@ -15,30 +45,7 @@ services:
       - backend
     volumes:
       - postgres_data:/var/lib/postgresql/data
-    logging:
-      options:
-        max-size: "500k"
-        max-file: "10"
 
-  backend:
-    container_name: backend
-    image: backend:latest
-    restart: always
-    depends_on:
-      - postgres
-    environment:
-      POSTGRES_HOST: postgres
-      POSTGRES_PORT: 5432
-      POSTGRES_USER: postgres
-      POSTGRES_PASS: 12345
-    ports:
-      - 80:8080
-    networks:
-      - backend
-    logging:
-      options:
-        max-size: "500k"
-        max-file: "10"
 
 networks:
   backend:
