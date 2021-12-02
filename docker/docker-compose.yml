@@ -2,19 +2,16 @@ version: '3.4'
 
 services:
 
-  main-nginx:
-    container_name: main-nginx
-    image: nginx
+  cabinet:
+    container_name: cabinet
+    image: cabinet:latest
     restart: always
-    depends_on:
-      - backend
-    ports:
-      - "0.0.0.0:80:80"
-      - "0.0.0.0:443:443"
     volumes:
-      - ./conf/backend.conf:/etc/nginx/conf.d/backend.conf
+      - ./docker/conf/config.json:/usr/share/nginx/html/assets/config.json
+      - ./docker/conf/cabinet.conf:/etc/nginx/conf.d/frontend.conf
     networks:
-      - backend
+      - frontend
+
 
   backend:
     container_name: backend
@@ -27,8 +24,8 @@ services:
       POSTGRES_PORT: 5432
       POSTGRES_USER: postgres
       POSTGRES_PASS: 12345
-#    ports:
-#      - 80:8080
+    ports:
+      - 8080:8080
     networks:
       - backend
 
@@ -45,7 +42,6 @@ services:
       - backend
     volumes:
       - postgres_data:/var/lib/postgresql/data
-
 
 networks:
   backend:

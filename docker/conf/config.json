@@ -1,0 +1,7 @@
+{
+    "production": false,
+    "baseUrl": "https://api.smartos.ru/api/v1/",
+    "loginPage": "https://api.smartos.ru/login",
+    "authUrl": "https://api.smartos.ru/oauth2/authorization/",
+    "name": "acceptance"
+}
