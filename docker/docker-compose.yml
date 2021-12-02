@@ -1,0 +1,46 @@
+version: '3.4'
+
+services:
+
+  postgres:
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 12345
+      POSTGRES_DB: acceptance
+    ports:
+      - 5432:5432
+    networks:
+      - backend
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    logging:
+      options:
+        max-size: "500k"
+        max-file: "10"
+
+  backend:
+    container_name: backend
+    image: backend:latest
+    restart: always
+    depends_on:
+      - postgres
+    environment:
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: 5432
+      POSTGRES_USER: postgres
+      POSTGRES_PASS: 12345
+    networks:
+      - backend
+    logging:
+      options:
+        max-size: "500k"
+        max-file: "10"
+
+networks:
+  backend:
+
+volumes:
+  postgres_data:
+    name: acceptance-postgres
