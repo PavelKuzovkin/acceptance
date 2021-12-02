@@ -1,0 +1,27 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left">{{prefix + (required ? 'TITLE':'OPTIONAL') | translate}}</h4>
+    <button *ngIf="bsModalRef" type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <div class="param_txt">
+        <div class="param_title">
+            <strong>{{parameter}}</strong> - {{description}}
+        </div>
+        <p class="mt-3">
+            <strong>{{prefix + 'USED' | translate}}:</strong>
+            {{used}}
+        </p>
+        <div *ngIf="examples && examples.length > 0">
+            <p class="mt-3"><strong>{{prefix + 'EXAMPLES' | translate}}:</strong></p>
+            <div>
+                <ul>
+                    <li *ngFor="let one of examples">
+                        {{parameter}} = {{one}}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

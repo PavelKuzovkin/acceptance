@@ -1,0 +1,76 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body" *ngIf="init">
+                <form *ngIf="form" [formGroup]="form" (ngSubmit)="onSubmit()" novalidate id="userForm"
+                      class="needs-validation tooltip-label-right">
+<!--                    <div class="row">-->
+<!--                        <div class="col-lg-12">-->
+<!--                            <app-form-select-->
+<!--                                [form]="form" [field]="'clientId'" [titleField]="'name'" [prefix]="prefix"-->
+<!--                                label="{{prefix + '.FIELD.CLIENT'}}" [list]="clientList" [submitted]="submitted"-->
+<!--                                [required]="true">-->
+<!--                            </app-form-select>-->
+<!--                        </div>-->
+<!--                    </div>-->
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <app-form-input [form]="form" [field]="'login'" [prefix]="prefix" [required]="false"
+                                            [submitted]="submitted"></app-form-input>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <app-form-input [form]="form" [field]="'password'" [prefix]="prefix" [required]="false"
+                                            [submitted]="submitted"></app-form-input>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <app-form-input [form]="form" [field]="'securQuestion'" [prefix]="prefix" [required]="false"
+                                            [submitted]="submitted"></app-form-input>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <app-form-input [form]="form" [field]="'securPin'" [prefix]="prefix" [required]="false"
+                                            [submitted]="submitted"></app-form-input>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <app-form-checkbox [form]="form" [field]="'isLocked'" [prefix]="prefix" [required]="false"
+                                               [submitted]="submitted"></app-form-checkbox>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-lg-6 mobile-hide">
+                            <button class="btn btn-outline-dark withText" type="button"
+                                    [routerLink]="['/dashboard/user']">
+                                <ion-icon name="list-outline"></ion-icon>
+                                {{prefixAction + 'LIST.TITLE' | translate}}</button>
+                        </div>
+                        <div class="col-lg-6 text-right btn-flex-block">
+                            <button class="btn btn-outline-dark withText mobile-view mr-3" type="button"
+                                    [routerLink]="['/dashboard/user']">
+                                <ion-icon name="list-outline"></ion-icon>
+                                {{prefixAction + 'LIST.TITLE' | translate}}</button>
+                            <button class="btn btn-outline-primary mr-3 withText mobile-hide" type="button"
+                                    (click)="saveToList()">
+                                <ion-icon name="list-outline"></ion-icon>
+                                {{prefixAction + 'SAVETOLIST.TITLE' | translate}}</button>
+                            <button class="btn btn-primary mr-3 withText" type="submit">
+                                <ion-icon name="save-outline"></ion-icon>
+                                {{prefixAction + 'SAVE.TITLE' | translate}}</button>
+                            <button *ngIf="!isNew" class="btn btn-danger withText" type="button" (click)="remove()">
+                                <ion-icon name="trash"></ion-icon>
+                                {{prefixAction + 'REMOVE.TITLE' | translate}}</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

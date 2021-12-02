@@ -1,0 +1,8 @@
+<span class="sortable" (click)="sort()">
+    <span>{{title | translate}}</span>
+    <span [ngClass]="{
+    'iconsminds-down-3': order === 'asc',
+    'iconsminds-up-3': order === 'desc',
+    'iconsminds-up---down-3': order === ''
+    }" class="glyph-icon" ></span>
+</span>

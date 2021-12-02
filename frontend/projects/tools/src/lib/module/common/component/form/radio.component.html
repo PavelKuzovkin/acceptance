@@ -1,0 +1,9 @@
+<div *ngIf="form" [formGroup]="form" class="form-group position-relative error-l-125" id="{{field}}" [ngClass]="{'has-error': !form.get(this.field)?.valid && !form.get(this.field)?.disabled && submitted, 'inline': inline}">
+    <label *ngIf="label && showLabel" for="{{field}}" >{{label| translate}}</label> <i *ngIf="required" class="text-danger m-l-5">*</i>
+    <div>
+        <div *ngFor="let one of list; let first = first" class="custom-control custom-radio" [ngClass]="{'ml-4': !first}">
+            <input formControlName="{{field}}" id="{{field + '-' + one.val}}" type="radio" class="custom-control-input" value="{{one.val}}">
+            <label class="custom-control-label" for="{{field + '-' + one.val}}">{{one.label| translate}}</label>
+        </div>
+    </div>
+</div>

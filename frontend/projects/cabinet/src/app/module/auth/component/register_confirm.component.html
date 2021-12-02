@@ -1,0 +1,17 @@
+<div class="authBlock">
+    <h6 class="mb-4 text-center">{{'AUTH.TITLE.CONFIRMREG'| translate}}</h6>
+
+    <form *ngIf="form" [formGroup]="form" (ngSubmit)="onSubmit()" novalidate class="tooltip-right-top position-relative mb-4 auth-form">
+        <label class="form-group has-float-label mb-4">
+            <input class="form-control" formControlName="code" type="text" placeholder="" [ngClass]="{'is-invalid': !form.get('code')?.valid && submitted}"/>
+            <span>{{'AUTH.FIELD.CODE'| translate}}</span>
+            <div class="invalid-tooltip" *ngIf="!form.get('code')?.valid && submitted">
+                <span *ngIf="form.get('code')?.hasError('required')">{{'AUTH.VALIDATE.REQCODE'| translate}}</span>
+            </div>
+        </label>
+        <div class="d-flex justify-content-end align-items-center">
+            <button class="btn btn-primary btn-lg btn-shadow" type="submit">{{'AUTH.ACTION.CONFIRM'| translate}}</button>
+        </div>
+    </form>
+</div>
+

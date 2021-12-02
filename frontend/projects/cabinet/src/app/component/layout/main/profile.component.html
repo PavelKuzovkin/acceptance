@@ -1,0 +1,13 @@
+<div class="user d-inline-block" dropdown *ngIf="init">
+    <button class="btn btn-empty p-0" type="button" dropdownToggle aria-haspopup="true" aria-expanded="false">
+        <span *ngIf="user" class="name">{{user.getShortName()}}</span>
+        <span>
+                    <img alt="Profile Picture" src="assets/img/layout/iconmonstr-user-20.svg" />
+                </span>
+    </button>
+
+    <div class="dropdown-menu dropdown-menu-right mt-3" *dropdownMenu>
+        <a class="dropdown-item" href="#" [routerLink]="['/user/profile']">Account</a>
+        <a class="dropdown-item" href="#" (click)="signOut()">Sign out</a>
+    </div>
+</div>

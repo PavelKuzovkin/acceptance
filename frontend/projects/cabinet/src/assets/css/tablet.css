@@ -1,0 +1,72 @@
+.t-show { display: block; }
+
+.t-hid { display: none; }
+
+.m-hid { display: block; }
+
+.m-show { display: none; }
+
+.footer_list { -webkit-box-align: center; -webkit-align-items: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: center; -webkit-justify-content: center; -ms-flex-pack: center; justify-content: center; }
+
+.footer_list li { margin: 0 15px; }
+
+.footer_list.open { display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; }
+
+.soc_item { width: 200px; height: 54px; font-size: 16px; }
+
+.soc { margin: 23px -15px 32px; }
+
+.soc_item_img { max-width: 24px; max-height: 24px; }
+
+h1 { font-size: 44px; }
+
+h2 { font-size: 28px; }
+
+h3 { font-size: 24px; }
+
+h4 { font-size: 20px; }
+
+.btn { padding: 10px 25px; }
+
+.section-main { padding: 140px 0 35px; }
+
+.main_cont { padding-right: 150px; }
+
+.main h1 { margin-right: 0px; }
+
+.main_txt { font-size: 18px; }
+
+.main_sm { font-size: 12px; max-width: 450px; line-height: 1.7; }
+
+.main_btn { max-width: 100%; margin: 44px 0 35px; }
+
+.piqs_item_txt { margin: 0 auto; }
+
+.section-authoriz { text-align: center; }
+
+.authoriz_txt { margin: 0 auto; max-width: 800px; margin: 12px auto 62px; }
+
+.form_link-copy .m-hid { display: none; }
+
+.radios-inline .radios_item { width: 33.33%; }
+
+.form_row_links { margin-right: 20px; }
+
+.win-login { width: 600px; padding: 30px; }
+
+.win-param { width: 600px; padding: 30px; }
+
+.cabinet { display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -webkit-flex-direction: row; -ms-flex-direction: row; flex-direction: row; -webkit-box-pack: start; -webkit-justify-content: flex-start; -ms-flex-pack: start; justify-content: flex-start; -webkit-box-align: stretch; -webkit-align-items: stretch; -ms-flex-align: stretch; align-items: stretch; }
+
+.sidebar { padding: 26px 28px 10px; min-width: 230px; width: 230px; background: #f7f8f9; margin: 0px 28px 0 -28px; }
+
+.form_wrap { display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-box-pack: justify; -webkit-justify-content: space-between; -ms-flex-pack: justify; justify-content: space-between; }
+
+.form_col { max-width: 421px; width: 48%; }
+
+.form_wrap_bottom .btn { width: 228px; }
+
+.center { padding-top: 20px; }
+
+/*----------------------------*/
+

@@ -1,0 +1,37 @@
+<div class="row">
+    <div class="col-lg-6 pt-3">
+        <div class="float-left m-r-md per-page">
+            <div class="input-group">
+        <span class="input-group-prepend">
+            {{prefix + 'SHOW'| translate}}
+        </span>
+                <select class="form-control form-control-sm ml-2" [(ngModel)]="perPage" (change)="changePerPage()">
+                    <option value="10">10</option>
+                    <option value="25">25</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                </select>
+                <span class="input-group-prepend ml-2">
+            {{prefix + 'ENTITY'| translate}}
+        </span>
+            </div>
+        </div>
+        <div class="float-left ml-4" *ngIf="pager">
+            {{prefix + 'SHOWING'| translate:pager}}
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <pagination  *ngIf="pager && pager.nbPages > 1" [totalItems]="pager.nbResult"
+                     [itemsPerPage]="pager.maxPerPage"
+                     [boundaryLinks]="true"
+                     (pageChanged)="changePage($event)"
+                     [maxSize]="7"
+                     [rotate]="true"
+                     previousText="&lsaquo;"
+                     nextText="&rsaquo;"
+                     firstText="&laquo;"
+                     lastText="&raquo;"
+                     [(ngModel)]="pager.currentPage">
+        </pagination>
+    </div>
+</div>

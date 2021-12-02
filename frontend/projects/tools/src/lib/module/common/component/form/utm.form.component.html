@@ -1,0 +1,16 @@
+<div *ngIf="form" [formGroup]="form"  class="form-group position-relative error-l-125" [ngClass]="{'has-error': !form.get(this.field)?.valid && !form.get(this.field)?.disabled && submitted}">
+    <label *ngIf="label" for="{{field}}">{{label| translate}}</label> <i *ngIf="required" class="text-danger m-l-5">*</i>
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <div class="form_prefix_txt">{{parameter}}</div>
+            <a href="/" class="help" (click)="showHelp()">
+                <ion-icon name="help-circle-outline"></ion-icon>
+            </a>
+        </div>
+        <input formControlName="{{field}}" type="{{type}}" class="form-control" [ngClass]="{'is-invalid': !form.get(this.field)?.valid && submitted}" id="{{field}}" [placeholder]="placeholder" autocomplete="off">
+    </div>
+    <div class="invalid-tooltip" *ngIf="!form.get(this.field)?.valid && submitted && !form.get(this.field)?.disabled">
+        <app-form-error [errors]="form.get(this.field)?.errors"></app-form-error>
+    </div>
+    <div *ngIf="helper" class="text-info">{{helperText| translate}}</div>
+</div>

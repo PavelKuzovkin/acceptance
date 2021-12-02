@@ -1,0 +1,7 @@
+<div *ngIf="form" [formGroup]="form" class="form-group">
+    <div class="mt-2 custom-checkbox custom-control">
+        <input formControlName="{{field}}" id="{{field}}" type="checkbox" class="custom-control-input">
+        <label class="custom-control-label" for="{{field}}">{{label| translate}}</label>
+    </div>
+    <div *ngIf="helper && helperText" class="text-info">{{helperText| translate}}</div>
+</div>

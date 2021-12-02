@@ -1,0 +1,34 @@
+<div *ngIf="tempForm" [formGroup]="tempForm"  class="form-group" [ngClass]="{'has-error': !form?.get(this.field)?.valid && !form?.get(this.field)?.disabled && submitted}">
+    <label for="{{field}}">{{label| translate}}</label> <i *ngIf="required" class="text-danger m-l-5">*</i>
+    <div>
+        <button type="button" class="btn btn-primary btn-xs ml-1 mb-1" (click)="setFastDateRange('last_24_hours')">{{'Last 24 hours' | translate}}</button>
+        <button type="button" class="btn btn-primary btn-xs ml-1 mb-1" (click)="setFastDateRange('today')">{{'Today' | translate}}</button>
+        <button type="button" class="btn btn-primary btn-xs ml-1 mb-1" (click)="setFastDateRange('this_month')">{{'This month' | translate}}</button>
+        <button type="button" class="btn btn-primary btn-xs ml-1 mb-1" (click)="setFastDateRange('last_month')">{{'Last month' | translate}}</button>
+    </div>
+    <label class="col-form-label">{{'From' | translate}}</label>
+    <div class="d-flex">
+        <div class="flex-grow-1 pr-3">
+            <input formControlName="dateFrom" placement="left" bsDatepicker [bsConfig]="{ rangeInputFormat : 'DD.MM.YYYY', dateInputFormat: 'DD.MM.YYYY', showWeekNumbers: false}" type="text" class="form-control" id="{{field + 'From'}}" [placeholder]="placeholder" autocomplete="off">
+        </div>
+        <div>
+            <timepicker formControlName="timeFrom" [showSpinners]="false" [showMeridian]="false"></timepicker>
+        </div>
+    </div>
+    <label class="col-form-label">{{'To' | translate}}</label>
+    <div class="d-flex">
+        <div class="flex-grow-1 pr-3">
+            <input formControlName="dateTo" placement="left" bsDatepicker [bsConfig]="{ rangeInputFormat : 'DD.MM.YYYY', dateInputFormat: 'DD.MM.YYYY', showWeekNumbers: false}" type="text" class="form-control" id="{{field + 'To'}}" [placeholder]="placeholder" autocomplete="off">
+        </div>
+        <div>
+            <timepicker formControlName="timeTo" [showSpinners]="false" [showMeridian]="false"></timepicker>
+        </div>
+    </div>
+    <span class="help-block" *ngIf="!form?.get(this.field)?.valid && submitted">
+        <span *ngFor="let one of form?.get(this.field)?.errors | mapToIterable">
+            <span *ngIf="one.key == 'required'">Обязательное поле</span>
+            <span *ngIf="one.key == 'rangeError'">Неверный диапазон дат</span>
+            <span *ngIf="one.key != 'required' && one.key != 'rangeError'">{{one.val}}</span>
+        </span>
+    </span>
+</div>

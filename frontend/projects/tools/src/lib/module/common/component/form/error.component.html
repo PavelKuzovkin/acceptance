@@ -1,0 +1,11 @@
+<div *ngFor="let one of errors | mapToIterable">
+    <span>{{prefix + one.key| uppercase | translate}}</span>
+<!--    <span *ngIf="one.key == 'email'">{{prefix + 'EMAIL' | translate}}</span>-->
+<!--    <span *ngIf="one.key == 'domainNameUnique'">{{prefix + 'DOMAINUNIQUE' | translate}}</span>-->
+<!--    <span *ngIf="-->
+<!--    one.key != 'required' &&-->
+<!--    one.key != 'domainNameUnique' &&-->
+<!--    one.key !== 'email'-->
+<!--">{{one.val|json}}</span>-->
+</div>
+

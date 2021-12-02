@@ -1,0 +1,25 @@
+<div  [formGroup]="form"  class="form-group position-relative error-l-125" [ngClass]="{'has-error': !form.get(field).valid && !form.get(field).disabled && submitted}">
+    <label *ngIf="label" for="{{field}}">{{label| translate}}</label> <i *ngIf="required" class="text-danger m-l-5">*</i>
+
+    <ngx-intl-tel-input
+        [ngClass]="{'is-invalid': !form.get(field).valid && submitted}" id="{{field}}"
+        [cssClass]="'form-control'"
+        [enableAutoCountrySelect]="false"
+        [enablePlaceholder]="true"
+        [searchCountryFlag]="true"
+        [searchCountryField]="[SearchCountryField.Iso2, SearchCountryField.Name]"
+        [selectFirstCountry]="false"
+        [selectedCountryISO]="CountryISO.Russia"
+        [maxLength]="15"
+        [tooltipField]="TooltipLabel.Name"
+        [phoneValidation]="true"
+        [separateDialCode]="separateDialCode"
+        name="phone" formControlName="{{field}}"
+    ></ngx-intl-tel-input>
+
+    <div class="invalid-tooltip" *ngIf="!form.get(field).valid && submitted">
+        <span *ngIf="form.controls['phone'].errors.required">Обязательное поле</span>
+        <span *ngIf="form.controls['phone'].errors.validatePhoneNumber">Неверный номер телефона</span>
+        <span *ngIf="form.controls['phone'].errors.phoneUnique">Пользователь с таким телефоном уже существует.</span>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+.input-group-prepend {
+    width: 159px;
+    min-width: 159px;
+    font-size: 14px;
+    padding: 0 7px 0 24px;
+    height: 40px;
+    color: #fff;
+    background: #e9ecef;
+    border-radius: 27px 0 0 27px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+.help {
+    font-size: 20px;
+    line-height: 14px;
+}

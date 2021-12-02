@@ -1,0 +1,17 @@
+<div *ngIf="form" [formGroup]="form"  class="form-group position-relative error-l-175" [ngClass]="{'has-error': !form.get(this.field)?.valid && !form.get(this.field)?.disabled && submitted}">
+    <label for="{{field}}">{{label| translate}}</label> <i *ngIf="required" class="text-danger m-l-5">*</i>
+    <div *ngIf="icon" class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-addon"><i class="fa fa-{{icon}}"></i></span>
+        </div>
+        <input readonly bsDatepicker [bsConfig]="{ dateInputFormat: 'DD.MM.YYYY', showWeekNumbers: false, adaptivePosition: true }" [minDate]="minDate" formControlName="{{field}}" type="text" class="form-control" id="{{field}}" [placeholder]="placeholder" autocomplete="off">
+    </div>
+    <input *ngIf="!icon" readonly bsDatepicker [bsConfig]="{ dateInputFormat: 'DD.MM.YYYY', showWeekNumbers: false, adaptivePosition: true}" [minDate]="minDate" formControlName="{{field}}" [ngClass]="{'is-invalid': !form.get(this.field)?.valid && submitted}" type="text" class="form-control" id="{{field}}" [placeholder]="placeholder" placement="top">
+    <span class="invalid-tooltip" *ngIf="form.get(field)?.status != 'DISABLED' && !form.get(this.field)?.valid && submitted">
+        <span *ngFor="let one of form.get(this.field)?.errors | mapToIterable">
+            <span *ngIf="one.key == 'required'">Обязательное поле</span>
+            <span *ngIf="one.key == 'rangeError'">Неверный диапазон дат</span>
+            <span *ngIf="one.key != 'required' && one.key != 'rangeError'">{{one.val}}</span>
+        </span>
+    </span>
+</div>

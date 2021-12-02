@@ -1,0 +1,8 @@
+<div *ngIf="tempForm" class="d-flex" [formGroup]="tempForm">
+    <div class="flex-grow-1 pr-3">
+        <input readonly bsDatepicker formControlName="date" [bsConfig]="{ dateInputFormat: 'DD.MM.YYYY', showWeekNumbers: false, adaptivePosition: true}"  [ngClass]="{'is-invalid': !tempForm.get(this.field)?.valid && submitted}" type="text" class="form-control">
+    </div>
+    <div>
+        <timepicker formControlName="time" [showSpinners]="false" [showMeridian]="false"></timepicker>
+    </div>
+</div>

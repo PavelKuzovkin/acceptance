@@ -1,0 +1,64 @@
+<div class="authBlock">
+    <form *ngIf="form" [formGroup]="form" (ngSubmit)="onSubmit()" novalidate class="tooltip-right-top position-relative mb-4 auth-form">
+        <div class="row fields">
+            <div class="col-lg-8 offset-lg-2 form-group">
+                <label class="has-float-label" [ngClass]="{'is-invalid': !form.get('email')?.valid && submitted}">
+                    <input formControlName="email" type="text" placeholder="" [ngClass]="{'is-invalid': !form.get('email')?.valid && submitted}" class="form-control">
+                    <div class="invalid-tooltip" *ngIf="!form.get('email')?.valid && submitted">
+                        <span *ngIf="form.get('email')?.hasError('required')">{{'AUTH.VALIDATE.REQEMAIL'| translate}}</span>
+                        <span *ngIf="form.get('email')?.hasError('validateEmail')">{{'AUTH.VALIDATE.INVEMAIL'| translate}}</span>
+                    </div>
+                    <span>{{'AUTH.FIELD.EMAIL'| translate}}</span>
+                </label>
+            </div>
+            <div class="col-lg-8 offset-lg-2 form-group">
+                <label class="has-float-label" >
+                    <input formControlName="password" type="password" placeholder="" [ngClass]="{'is-invalid': !form.get('password')?.valid && submitted}"  class="form-control">
+                    <div class="invalid-tooltip" *ngIf="!form.get('password')?.valid && submitted">
+                        <span *ngIf="form.get('password')?.hasError('required')">{{'AUTH.VALIDATE.REQPASSWORD'| translate}}</span>
+                        <span *ngIf="form.get('password')?.hasError('incorrect')">{{'AUTH.VALIDATE.INCORRECT'| translate}}</span>
+                    </div>
+                    <span>{{'AUTH.FIELD.PASSWORD'| translate}}</span>
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 form-group">
+                <div class="d-flex justify-content-between align-items-center"><a
+                    [routerLink]="['/forgot_password']">{{'AUTH.ACTION.FORGOT'| translate}}</a>
+                    <button class="btn btn-primary btn-sm " type="submit">{{'AUTH.ACTION.SIGNIN'| translate}}</button>
+                    <button class="btn btn-primary btn-sm " type="button" (click)="redirectToCabinet()">
+                        {{'COMMON.ACTION.CANCEL'| translate}}</button>
+                </div>
+            </div>
+            <div class="col-lg-8 offset-lg-2 text-center form-group">
+                <a [routerLink]="['/registration']">{{'AUTH.ACTION.SIGNUP'| translate}}</a>
+            </div>
+        </div>
+    </form>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="win win-login" id="win-login">
+                <h5>{{'AUTH.TITLE.SOCIAL'| translate}}</h5>
+                <div class="soc">
+                    <a href="{{authUrl}}google" class="soc_item soc_item1">
+                        <span class="soc_item_icon"></span>
+                        <span class="soc_item_txt">Google</span>
+                    </a>
+                    <a href="{{authUrl}}facebook" class="soc_item soc_item2">
+                        <span class="soc_item_icon"></span>
+                        <span class="soc_item_txt">Facebook</span>
+                    </a>
+                    <a href="{{authUrl}}yandex" class="soc_item soc_item4">
+                        <span class="soc_item_icon"></span>
+                        <span class="soc_item_txt">Яндекс</span>
+                    </a>
+                    <!--                    <a href="{{authUrl}}twitter" class="soc_item soc_item5">-->
+                    <!--                    <span class="soc_item_icon"></span>-->
+                    <!--                    <span class="soc_item_txt">Twitter</span>-->
+                    <!--                    </a>-->
+                </div>
+            </div>
+        </div>
+    </div>

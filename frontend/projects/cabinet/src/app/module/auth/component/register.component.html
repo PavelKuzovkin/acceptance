@@ -1,0 +1,50 @@
+<div class="authBlock">
+    <h4 class="mb-4 text-center">{{'AUTH.TITLE.REG'| translate}}</h4>
+
+    <form *ngIf="form" [formGroup]="form" (ngSubmit)="onSubmit()" novalidate class="tooltip-right-top position-relative mb-4 auth-form">
+            <label class="form-group has-float-label mb-4">
+                <input class="form-control" formControlName="firstName" type="text" placeholder="" [ngClass]="{'is-invalid': !form.get('firstName')?.valid && submitted}"/>
+                <span>{{'AUTH.FIELD.FNAME'| translate}}</span>
+                <div class="invalid-tooltip" *ngIf="!form.get('firstName')?.valid && submitted">
+                    <span *ngIf="form.get('firstName')?.hasError('required')">{{'AUTH.VALIDATE.REQFNAME'| translate}}</span>
+                </div>
+            </label>
+            <label class="form-group has-float-label mb-4">
+                <input class="form-control" formControlName="lastName" type="text" placeholder="" [ngClass]="{'is-invalid': !form.get('lastName')?.valid && submitted}"/>
+                <span>{{'AUTH.FIELD.LNAME'| translate}}</span>
+                <div class="invalid-tooltip" *ngIf="!form.get('lastName')?.valid && submitted">
+                    <span *ngIf="form.get('lastName')?.hasError('required')">{{'AUTH.VALIDATE.REQLNAME'| translate}}</span>
+                </div>
+            </label>
+            <label class="form-group has-float-label mb-4">
+                <input class="form-control" formControlName="email" type="text" placeholder="" [ngClass]="{'is-invalid': !form.get('email')?.valid && submitted}"/>
+                <span>{{'AUTH.FIELD.EMAIL'| translate}}</span>
+                <div class="invalid-tooltip" *ngIf="!form.get('email')?.valid && submitted">
+                    <span *ngIf="form.get('email')?.hasError('required')">{{'AUTH.VALIDATE.REQEMAIL'| translate}}</span>
+                    <span *ngIf="form.get('email')?.hasError('validateEmail')">{{'AUTH.VALIDATE.WRONGEMAIL'| translate}}</span>
+                    <span *ngIf="form.get('email')?.hasError('emailUnique')">{{'AUTH.VALIDATE.EMAILUNIQUE'| translate}}</span>
+                </div>
+            </label>
+            <label class="form-group has-float-label mb-4">
+                <input class="form-control" formControlName="password" type="password" placeholder="" [ngClass]="{'is-invalid': !form.get('password')?.valid && submitted}"/>
+                <span>{{'AUTH.FIELD.PASSWORD'| translate}}</span>
+                <div class="invalid-tooltip" *ngIf="!form.get('password')?.valid && submitted">
+                    <span *ngIf="form.get('password')?.hasError('required')">{{'AUTH.VALIDATE.REQPASSWORD'| translate}}</span>
+                    <span *ngIf="form.get('password')?.hasError('minlength')">{{'AUTH.VALIDATE.LENGTHPASSWORD'| translate}}</span>
+                </div>
+            </label>
+            <label class="form-group has-float-label mb-4">
+                <input class="form-control" formControlName="confirmPassword" type="password" placeholder="" [ngClass]="{'is-invalid': !form.get('confirmPassword')?.valid && submitted}"/>
+                <span>{{'AUTH.FIELD.CONFIRMPASSWORD'| translate}}</span>
+                <div class="invalid-tooltip" *ngIf="!form.get('confirmPassword')?.valid && submitted">
+                    <span *ngIf="form.get('confirmPassword')?.hasError('required')">{{'AUTH.VALIDATE.CONFIRMPASSWORD'| translate}}</span>
+                    <span *ngIf="form.get('confirmPassword')?.hasError('minlength')">{{'AUTH.VALIDATE.LENGTHPASSWORD'| translate}}</span>
+                    <span *ngIf="form.get('confirmPassword')?.hasError('matchPassword')">{{'AUTH.VALIDATE.MATCHPASSWORD'| translate}}</span>
+                </div>
+            </label>
+            <div class="d-flex justify-content-between align-items-center">
+                <a [routerLink]="['/login']">{{'AUTH.ACTION.LOGIN'| translate}}</a>
+                <button class="btn btn-primary btn-lg btn-shadow" type="submit">{{'COMMON.ACTION.SAVE.TITLE'| translate}}</button>
+            </div>
+        </form>
+</div>

@@ -1,0 +1,184 @@
+{
+    "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+    "cli": {
+        "analytics": "153235a0-ca8d-482b-b03b-c761a10b7a7b"
+    },
+    "version": 1,
+    "newProjectRoot": "projects",
+    "projects": {
+        "cabinet": {
+            "projectType": "application",
+            "schematics": {
+                "@schematics/angular:application": {
+                    "strict": true
+                }
+            },
+            "root": "projects/cabinet",
+            "sourceRoot": "projects/cabinet/src",
+            "prefix": "app",
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-angular:browser",
+                    "options": {
+                        "outputPath": "dist/cabinet",
+                        "index": "projects/cabinet/src/index.html",
+                        "main": "projects/cabinet/src/main.ts",
+                        "polyfills": "projects/cabinet/src/polyfills.ts",
+                        "tsConfig": "projects/cabinet/tsconfig.app.json",
+                        "assets": [
+                            "projects/cabinet/src/favicon.ico",
+                            "projects/cabinet/src/assets",
+                            {
+                                "glob": "**/*.svg",
+                                "input": "node_modules/ionicons/dist/ionicons/svg",
+                                "output": "./svg"
+                            }
+                        ],
+                        "styles": [
+                            "projects/cabinet/src/assets/css/iconsminds.css",
+                            "projects/cabinet/src/assets/css/simple-line-icons.css",
+                            "projects/cabinet/src/assets/css/bootstrap.min.css",
+                            "projects/cabinet/src/assets/css/bootstrap.rtl.only.min.css",
+                            "node_modules/flag-icon-css/css/flag-icon.min.css",
+                            "node_modules/ngx-toastr/toastr.css"
+                        ],
+                        "scripts": [
+                            "node_modules/jquery/dist/jquery.js",
+                            "projects/cabinet/src/assets/js/bootstrap.bundle.min.js",
+                            "projects/cabinet/src/assets/js/mousetrap.min.js",
+                            "projects/cabinet/src/assets/js/scripts.single.theme.js"
+                        ]
+                    },
+                    "configurations": {
+                        "production": {
+                            "budgets": [
+                                {
+                                    "type": "initial",
+                                    "maximumWarning": "500kb",
+                                    "maximumError": "3mb"
+                                },
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "2kb",
+                                    "maximumError": "200kb"
+                                }
+                            ],
+                            "fileReplacements": [
+                                {
+                                    "replace": "projects/cabinet/src/environments/environment.ts",
+                                    "with": "projects/cabinet/src/environments/environment.prod.ts"
+                                }
+                            ],
+                            "outputHashing": "all"
+                        },
+                        "development": {
+                            "buildOptimizer": false,
+                            "optimization": false,
+                            "vendorChunk": true,
+                            "extractLicenses": false,
+                            "sourceMap": true,
+                            "namedChunks": true
+                        }
+                    },
+                    "defaultConfiguration": "production"
+                },
+                "serve": {
+                    "builder": "@angular-devkit/build-angular:dev-server",
+                    "configurations": {
+                        "production": {
+                            "browserTarget": "cabinet:build:production"
+                        },
+                        "development": {
+                            "browserTarget": "cabinet:build:development"
+                        }
+                    },
+                    "defaultConfiguration": "development"
+                },
+                "extract-i18n": {
+                    "builder": "@angular-devkit/build-angular:extract-i18n",
+                    "options": {
+                        "browserTarget": "cabinet:build"
+                    }
+                },
+                "test": {
+                    "builder": "@angular-devkit/build-angular:karma",
+                    "options": {
+                        "main": "projects/cabinet/src/test.ts",
+                        "polyfills": "projects/cabinet/src/polyfills.ts",
+                        "tsConfig": "projects/cabinet/tsconfig.spec.json",
+                        "karmaConfig": "projects/cabinet/karma.conf.js",
+                        "assets": [
+                            "projects/cabinet/src/favicon.ico",
+                            "projects/cabinet/src/assets",
+                            {
+                                "glob": "**/*.svg",
+                                "input": "node_modules/ionicons/dist/ionicons/svg",
+                                "output": "./svg"
+                            }
+                        ],
+                        "styles": [
+                            "projects/cabinet/src/styles.css"
+                        ],
+                        "scripts": []
+                    }
+                },
+                "ionic-cordova-serve": {
+                    "builder": "@ionic/angular-toolkit:cordova-serve",
+                    "options": {
+                        "cordovaBuildTarget": "cabinet:ionic-cordova-build",
+                        "devServerTarget": "cabinet:serve"
+                    },
+                    "configurations": {
+                        "production": {
+                            "cordovaBuildTarget": "cabinet:ionic-cordova-build:production",
+                            "devServerTarget": "cabinet:serve:production"
+                        }
+                    }
+                },
+                "ionic-cordova-build": {
+                    "builder": "@ionic/angular-toolkit:cordova-build",
+                    "options": {
+                        "browserTarget": "cabinet:build"
+                    },
+                    "configurations": {
+                        "production": {
+                            "browserTarget": "cabinet:build:production"
+                        }
+                    }
+                }
+            }
+        },
+        "tools": {
+            "projectType": "library",
+            "root": "projects/tools",
+            "sourceRoot": "projects/tools/src",
+            "prefix": "lib",
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-angular:ng-packagr",
+                    "options": {
+                        "project": "projects/tools/ng-package.json"
+                    },
+                    "configurations": {
+                        "production": {
+                            "tsConfig": "projects/tools/tsconfig.lib.prod.json"
+                        },
+                        "development": {
+                            "tsConfig": "projects/tools/tsconfig.lib.json"
+                        }
+                    },
+                    "defaultConfiguration": "production"
+                },
+                "test": {
+                    "builder": "@angular-devkit/build-angular:karma",
+                    "options": {
+                        "main": "projects/tools/src/test.ts",
+                        "tsConfig": "projects/tools/tsconfig.spec.json",
+                        "karmaConfig": "projects/tools/karma.conf.js"
+                    }
+                }
+            }
+        }
+    },
+    "defaultProject": "cabinet"
+}
