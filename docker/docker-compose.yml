@@ -31,6 +31,8 @@ services:
       POSTGRES_PORT: 5432
       POSTGRES_USER: postgres
       POSTGRES_PASS: 12345
+    ports:
+      - 80:8080
     networks:
       - backend
     logging:
