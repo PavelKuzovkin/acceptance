@@ -7,7 +7,7 @@ services:
     image: nginx
     restart: always
     depends_on:
-      - postgres
+      - backend
     ports:
       - "0.0.0.0:80:80"
       - "0.0.0.0:443:443"
