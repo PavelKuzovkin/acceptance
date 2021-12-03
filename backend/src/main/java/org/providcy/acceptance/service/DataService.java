@@ -84,13 +84,15 @@ public class DataService {
         incident.setFileName(fileName);
         incidentRepository.save(incident);
 
-        try {
-            File newFile = new File(imgSavePath + fileName);
-            BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(newFile));
-            stream.write(Base64.decodeBase64(dto.getBase64dataUrl().split(",")[1]));
-            stream.close();
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (imgSavePath != null && !imgSavePath.isEmpty()) {
+            try {
+                File newFile = new File(imgSavePath + fileName);
+                BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(newFile));
+                stream.write(Base64.decodeBase64(dto.getBase64dataUrl().split(",")[1]));
+                stream.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
 
         this.currentErrors = dto.getPredictions().length;

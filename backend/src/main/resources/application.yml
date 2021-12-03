@@ -19,4 +19,4 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
     show-sql: false
 
-img-save-path: "d:\\0\\img\\"
+img-save-path: ${IMG_SAVE_PATH:"d:\\0\\img\\"}
