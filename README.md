@@ -26,8 +26,6 @@
 DNS имя для API необходимо перед выполнением установки указать вместо "api.smartos.ru" в файлах:
 * ./docker/conf/config.json
 * ./recognition/pepper-cam/sources/views/detector/index.js
-*
-* и !!!!.....!!!!
 
 Развертывание сервиса производится в docker-контейнерах.
 Требуется установленные пакеты docker и docker-compose (их установка описана в разделе УСТАНОВКА)
