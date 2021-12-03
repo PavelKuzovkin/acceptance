@@ -9,6 +9,7 @@ import {TranslateService} from "@ngx-translate/core";
 import {BreadcrumbsService} from "../../../../../../../tools/src/lib/module/common/service/breadcrumbs.service";
 import {InvoiceProvider} from "../../provider/invoice.provider";
 import {IInvoice} from "../../model/invoice";
+import {StateProvider} from "../../provider/state.provider";
 
 @Component({
     selector: 'app-invoice-list',
@@ -17,12 +18,14 @@ import {IInvoice} from "../../model/invoice";
 export class IndexInvoiceComponent extends ListComponent implements OnInit {
     list: IInvoice[] = [];
     prefix = 'INVOICE.FIELD.';
+    currentErrors = 0;
 
     constructor(
         protected fb: FormBuilder,
         protected router: Router,
         protected route: ActivatedRoute,
         protected provider: InvoiceProvider,
+        protected stateProvider: StateProvider,
         protected toasterService: ToastrService,
         protected progress: NgProgress,
         protected titleService: Title,
@@ -37,12 +40,18 @@ export class IndexInvoiceComponent extends ListComponent implements OnInit {
     ngOnInit(): void {
         super.ngOnInit();
         setInterval(() => {
-            const t = this.getList(true);
+            this.getList(true);
+            this.getCurrentState();
         }, 3000)
 
     }
 
+    getCurrentState(): void {
+        this.stateProvider.get().subscribe((i: any) => { this.currentErrors = i; });
+    }
+
     refresh(): void {
         this.getList();
+        this.getCurrentState();
     }
 }

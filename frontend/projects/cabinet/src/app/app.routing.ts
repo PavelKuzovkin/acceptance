@@ -2,7 +2,7 @@ import {Routes} from "@angular/router";
 import {MainLayoutComponent} from "./component/layout/main/main.layout.component";
 
 export const AppRoutes: Routes = [
-    {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
+    {path: '', redirectTo: 'dashboard/invoice', pathMatch: 'full'},
     {
         path: 'dashboard', component: MainLayoutComponent,
         children: [

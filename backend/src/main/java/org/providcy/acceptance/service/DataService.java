@@ -16,6 +16,7 @@ import java.util.Optional;
 public class DataService {
 
     private final InvoiceRepository repository;
+    private Integer currentErrors = 0;
 
     public void setNumber(NumberInDTO dto) {
         Optional<Invoice> optional = repository.findLastByDeviceId(dto.getDeviceId());
@@ -37,14 +38,18 @@ public class DataService {
             repository.save(data);
         }
 
-        Invoice data = new Invoice();
-        data.setDeviceId(dto.getDeviceId());
-        data.setCreatedAt(Instant.now());
-        data.setUnloadingStart(Instant.now());
-        data.setWagonNumber(dto.getNumber());
-        data.setState(InvoiceState.UNLOAD);
+        if (dto.getNumber() != null && !dto.getNumber().isEmpty()) {
+            Invoice data = new Invoice();
+            data.setDeviceId(dto.getDeviceId());
+            data.setCreatedAt(Instant.now());
+            data.setUnloadingStart(Instant.now());
+            data.setWagonNumber(dto.getNumber());
+            data.setState(InvoiceState.UNLOAD);
 
-        repository.save(data);
+            repository.save(data);
+        }
+
+        this.currentErrors = 0;
     }
 
     public void saveError(ErrorInDTO dto) {
@@ -55,5 +60,11 @@ public class DataService {
             data.setUnloadingError(data.getUnloadingError() + dto.getPredictions().length);
             repository.save(data);
         }
+
+        this.currentErrors = dto.getPredictions().length;
+    }
+
+    public Integer getCurrentErrors() {
+        return this.currentErrors;
     }
 }
