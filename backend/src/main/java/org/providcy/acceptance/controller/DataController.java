@@ -27,6 +27,7 @@ public class DataController {
 
     @PostMapping("/detect")
     public ResponseEntity getDetect(@RequestBody String dto) {
+        System.out.println(dto);
         service.saveError(dto);
         return new ResponseEntity(HttpStatus.OK);
     }
