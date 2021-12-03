@@ -1,24 +1,26 @@
-import {Component} from "@angular/core";
-import {NewComponent} from "../../../../../../../tools/src/lib/module/common/component/action/new.component";
-import {Router} from "@angular/router";
+import {Component, OnInit} from "@angular/core";
+import {EditComponent} from "../../../../../../../tools/src/lib/module/common/component/action/edit.component";
+import {ActivatedRoute, Router} from "@angular/router";
 import {NgProgress} from "ngx-progressbar";
 import {Title} from "@angular/platform-browser";
 import {ToastrService} from "ngx-toastr";
 import {FormBuilder} from "@angular/forms";
 import {BreadcrumbsService} from "../../../../../../../tools/src/lib/module/common/service/breadcrumbs.service";
 import {TranslateService} from "@ngx-translate/core";
-import {Invoice} from "../../model/invoice";
 import {InvoiceProvider} from "../../provider/invoice.provider";
 import {InvoiceService} from "../../service/invoice.service";
+import {ISelect} from "../../../../../../../tools/src/lib/module/common/model/select";
 
 @Component({
-    selector: 'app-invoice-new',
-    templateUrl: './new.component.html'
+    selector: 'app-invoice-close',
+    templateUrl: './close.component.html'
 })
-export class NewInvoiceComponent extends NewComponent {
-    prefix = 'INVOICE'
+export class CloseInvoiceComponent extends EditComponent implements OnInit {
+    prefix = 'INVOICE';
+    stateList: ISelect[];
 
     constructor(
+        protected route: ActivatedRoute,
         protected router: Router,
         protected progress: NgProgress,
         protected titleService: Title,
@@ -27,22 +29,21 @@ export class NewInvoiceComponent extends NewComponent {
         protected provider: InvoiceProvider,
         private service: InvoiceService,
         private breadcrumbs: BreadcrumbsService,
-        protected translate: TranslateService,
+        protected translate: TranslateService
     ) {
-        super(router, progress, titleService, toasterService, fb, provider, translate);
-        this.model = new Invoice();
+        super(route, router, progress, titleService, toasterService, fb, provider, translate);
         this.statelink.page = '/dashboard/invoice';
 
-        this.service.init(this.model);
-    }
+        this.stateList = [
+            {id: 'ACCEPTED', name: 'Принято'},
+            {id: 'PARTLY_ACCEPTED', name: 'Частично принято'},
+            {id: 'REJECTED', name: 'Не принято'},
+        ];
 
-    createForm(): void {
-        this.form = this.service.createForm();
     }
 
     getMoreInfo(): void {
-        this.model.state = 'NONE';
+        this.model.state = 'ACCEPTED';
         super.getMoreInfo();
     }
-
 }

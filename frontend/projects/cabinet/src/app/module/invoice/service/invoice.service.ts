@@ -22,6 +22,9 @@ export class InvoiceService {
             invoiceNumber: [this.model?.invoiceNumber, Validators.required],
             wagonNumber: [this.model?.wagonNumber, Validators.required],
             weightBefore: [this.model?.weightBefore, Validators.required],
+            weightAfter: [this.model?.weightAfter, Validators.required],
+            weightAccepted: [this.model?.weightAccepted, Validators.required],
+            state: [this.model?.state, Validators.required],
         });
 
         return this.form;

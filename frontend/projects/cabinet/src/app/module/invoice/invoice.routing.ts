@@ -1,6 +1,7 @@
 import {Routes} from "@angular/router";
 import {IndexInvoiceComponent} from "./component/list/index.component";
 import {NewInvoiceComponent} from "./component/new/new.component";
+import {CloseInvoiceComponent} from "./component/close/close.component";
 
 
 export const InvoiceRoutes: Routes = [
@@ -12,11 +13,10 @@ export const InvoiceRoutes: Routes = [
         }, {
             path: 'new',
             component: NewInvoiceComponent
+        }, {
+            path: ':id',
+            component: CloseInvoiceComponent
         }
-            // {
-            //     path: ':id',
-            //     component: EditUserComponent
-            // }
         ]
     }
 ]

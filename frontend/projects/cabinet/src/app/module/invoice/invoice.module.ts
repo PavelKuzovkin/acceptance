@@ -19,6 +19,7 @@ import {IndexInvoiceComponent} from "./component/list/index.component";
 import {InvoiceProvider} from "./provider/invoice.provider";
 import {NewInvoiceComponent} from "./component/new/new.component";
 import {InvoiceService} from "./service/invoice.service";
+import {CloseInvoiceComponent} from "./component/close/close.component";
 
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -46,7 +47,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     ],
     declarations: [
         IndexInvoiceComponent,
-        NewInvoiceComponent
+        NewInvoiceComponent,
+        CloseInvoiceComponent
     ],
     providers: [
         HttpClient,
