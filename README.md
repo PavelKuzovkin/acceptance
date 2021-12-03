@@ -18,14 +18,12 @@
 Требуется установленный web-сервер NGINX с настройками:
 1. работа по протоколу HTTPS (установлены сертификаты SSL)
 2. корневая директория - /var/www/html
-3. проксирование DNS имени для API должно быть натроено на localhost:8080
-4. проксирование DNS имени для web-интерфейса должно быть натроено на localhost:9090
+3. проксирование DNS имени для API должно быть настроено на localhost:8080
+4. проксирование DNS имени для web-интерфейса должно быть настроено на localhost:9090
 
 DNS имя для API необходимо перед выполнением установки указать вместо "api.smartos.ru" в файлах:
 * ./docker/conf/config.json
 * ./recognition/pepper-cam/sources/views/detector/index.js
-* ./recognition/pepper-cam/sources/views/settings/form.js
-* ./recognition/pepper-cam/sources/views/settings/form.js
 *
 * и !!!!.....!!!!
 
