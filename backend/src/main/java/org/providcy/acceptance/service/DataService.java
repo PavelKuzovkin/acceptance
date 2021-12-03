@@ -20,12 +20,8 @@ public class DataService {
     public void setNumber(NumberInDTO dto) {
         Optional<Invoice> optional = repository.findLastByDeviceId(dto.getDeviceId());
 
-        System.out.println("============ 1");
-
         if (optional.isPresent()) {
-            System.out.println("============ 2");
             Invoice data = optional.get();
-            System.out.println(data);
             data.setUnloadingEnd(Instant.now());
 
             InvoiceState state;
@@ -60,5 +56,4 @@ public class DataService {
             repository.save(data);
         }
     }
-
 }

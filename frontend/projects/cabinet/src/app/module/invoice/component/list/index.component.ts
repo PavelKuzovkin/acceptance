@@ -32,22 +32,14 @@ export class IndexInvoiceComponent extends ListComponent implements OnInit {
         super(fb, router, route, provider, toasterService, progress, titleService, translate);
 
         this.statelink.page = '/dashboard/invoice'
-
-        // const pref = 'INVOICE.';
-        // this.translate.get([
-        //     pref + 'TITLE'
-        // ]).subscribe(mess => {
-        //     this.title = mess[pref + 'TITLE'];
-        //
-        //     this.breadcrumbs.setPath({
-        //         title: this.title
-        //     })
-        // })
-
     }
 
     ngOnInit(): void {
         super.ngOnInit();
+        setInterval(() => {
+            const t = this.getList(true);
+        }, 3000)
+
     }
 
     refresh(): void {

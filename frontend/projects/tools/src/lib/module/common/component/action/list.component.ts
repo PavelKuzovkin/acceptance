@@ -85,8 +85,9 @@ export abstract class ListComponent extends AComponent implements OnInit {
         }
     }
 
-    getList(): void {
-        this.progressRef.start();
+    getList(noProgress = false): void {
+        if (!noProgress)
+            this.progressRef.start();
         // @ts-ignore
         this.provider[this.query](this.page, this.queryParams)
             .subscribe((list: any) => {
@@ -97,7 +98,8 @@ export abstract class ListComponent extends AComponent implements OnInit {
                     this.moreOptions = list.moreOptions;
                     this.callbackOnInit();
                 }
-                this.progressRef.complete();
+                if (!noProgress)
+                    this.progressRef.complete();
             });
     }
 

@@ -20,14 +20,12 @@ public class DataController {
 
     @PostMapping("/number")
     public ResponseEntity getNumber(@RequestBody NumberInDTO dto) {
-        System.out.println(dto.getNumber());
         service.setNumber(dto);
         return new ResponseEntity(HttpStatus.OK);
     }
 
     @PostMapping("/detect")
     public ResponseEntity getDetect(@RequestBody ErrorInDTO dto) {
-        System.out.println(dto);
         service.saveError(dto);
         return new ResponseEntity(HttpStatus.OK);
     }
