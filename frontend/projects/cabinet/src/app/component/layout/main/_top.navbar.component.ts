@@ -27,37 +27,37 @@ export class TopNavbarComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.userProvider.getCurrent().subscribe(user => {
-            this.user = user;
-            if (this.user && this.user?.serverTime) {
-                if (this.user?.timezone) {
-                    this.time = this.user?.serverTime.tz(this.user?.timezone);
-                } else {
-                    const offset = (new Date().getTimezoneOffset())/ 60;
-                    this.user?.serverTime.utcOffset(offset)
-                }
-            }
-
-            this.timer();
-            this.init = true;
-        });
-
-        document.addEventListener('changeTimezone', (event) => {
-            const custom = event as CustomEvent;
-            if (this.user && this.user?.serverTime)
-                this.time = this.user?.serverTime.tz(custom.detail);
-
-            this.timer();
-        });
+        // this.userProvider.getCurrent().subscribe(user => {
+        //     this.user = user;
+        //     if (this.user && this.user?.serverTime) {
+        //         if (this.user?.timezone) {
+        //             this.time = this.user?.serverTime.tz(this.user?.timezone);
+        //         } else {
+        //             const offset = (new Date().getTimezoneOffset())/ 60;
+        //             this.user?.serverTime.utcOffset(offset)
+        //         }
+        //     }
+        //
+        //     this.timer();
+        //     this.init = true;
+        // });
+        //
+        // document.addEventListener('changeTimezone', (event) => {
+        //     const custom = event as CustomEvent;
+        //     if (this.user && this.user?.serverTime)
+        //         this.time = this.user?.serverTime.tz(custom.detail);
+        //
+        //     this.timer();
+        // });
     }
 
     logout() {
-        this.init = false;
-        this.authenticationService.logout();
-        // this.router.navigateByUrl('/login');
-        location.reload()
-
-        return false;
+        // this.init = false;
+        // this.authenticationService.logout();
+        // // this.router.navigateByUrl('/login');
+        // location.reload()
+        //
+        // return false;
     }
 
     timer() {

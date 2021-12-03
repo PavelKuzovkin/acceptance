@@ -1,24 +1,24 @@
 <div class="row" *ngIf="breadcrumbs.show() | async">
     <div class="col-12">
-        <h1 class="d-flex align-items-center">{{breadcrumbs.getTitle()| async}}
+        <h2 class="d-flex align-items-center">{{breadcrumbs.getTitle()| async}}
             <div class="ml-2" *ngIf="breadcrumbs.showHelper() | async">
                 <div class="icon-link glyph" tooltip="{{breadcrumbs.getHelper()| async}}"
                      placement="right">
                     <div class="glyph-icon simple-icon-question"></div>
                 </div>
             </div>
-        </h1>
-        <nav *ngIf="breadcrumbs.showPath() | async" class="breadcrumb-container d-none d-sm-block d-lg-inline-block" aria-label="breadcrumb">
-            <ol class="breadcrumb pt-0">
-                <li class="breadcrumb-item">
-                    <a href="" [routerLink]="['/dashboard']">{{'MENU.HOME'| translate}}</a>
-                </li>
-                <li *ngFor="let a of breadcrumbs.getPath() | async" class="breadcrumb-item">
-                    <a href="" [routerLink]="[a.link]">{{a.title}}</a>
-                </li>
-                <li class="breadcrumb-item active" aria-current="page">{{breadcrumbs.getTitle() | async}}</li>
-            </ol>
-        </nav>
-        <div class="separator mb-5"></div>
+        </h2>
+<!--        <nav *ngIf="breadcrumbs.showPath() | async" class="breadcrumb-container d-none d-sm-block d-lg-inline-block" aria-label="breadcrumb">-->
+<!--            <ol class="breadcrumb pt-0">-->
+<!--                <li class="breadcrumb-item">-->
+<!--                    <a href="" [routerLink]="['/dashboard']">{{'MENU.HOME'| translate}}</a>-->
+<!--                </li>-->
+<!--                <li *ngFor="let a of breadcrumbs.getPath() | async" class="breadcrumb-item">-->
+<!--                    <a href="" [routerLink]="[a.link]">{{a.title}}</a>-->
+<!--                </li>-->
+<!--                <li class="breadcrumb-item active" aria-current="page">{{breadcrumbs.getTitle() | async}}</li>-->
+<!--            </ol>-->
+<!--        </nav>-->
+<!--        <div class="separator mb-5"></div>-->
     </div>
 </div>

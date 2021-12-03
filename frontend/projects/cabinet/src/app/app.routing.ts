@@ -1,6 +1,5 @@
 import {Routes} from "@angular/router";
 import {MainLayoutComponent} from "./component/layout/main/main.layout.component";
-import {AuthLayoutComponent} from "./component/layout/auth/auth.layout.component";
 
 export const AppRoutes: Routes = [
     {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
@@ -8,6 +7,7 @@ export const AppRoutes: Routes = [
         path: 'dashboard', component: MainLayoutComponent,
         children: [
             {path: 'user', loadChildren: () => import('./module/user/user.module').then(m => m.UserModule)},
+            {path: 'invoice', loadChildren: () => import('./module/invoice/invoice.module').then(m => m.InvoiceModule)},
         ]
     },
     // {

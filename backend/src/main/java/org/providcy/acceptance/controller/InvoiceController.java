@@ -30,7 +30,7 @@ public class InvoiceController {
     @GetMapping
     public ResponseEntity<PagerResponse<Invoice>> findAll(
             InvoiceSearchDTO searchDTO,
-            @PageableDefault(sort = {"createdAt"}, direction = Sort.Direction.DESC) final Pageable pageable
+            @PageableDefault(sort = {"id"}, direction = Sort.Direction.DESC) final Pageable pageable
     ) {
 
         return ResponseEntity.ok(Pagination.of(service.findAll(pageable, searchDTO)));

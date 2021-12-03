@@ -91,18 +91,9 @@ export abstract class ListComponent extends AComponent implements OnInit {
         this.provider[this.query](this.page, this.queryParams)
             .subscribe((list: any) => {
                 if (list.status === 200) {
-                    this.list = list.content;
-                    // this.pager = list.pager;
-                    this.pager = new Pager(
-                        list.number + 1,
-                        list.last ? list.totalElements : (list.number + 1) * list.size,
-                        list.number + 1 < list.totalPages,
-                        list.number > 0,
-                        list.size,
-                        list.totalPages,
-                        list.totalElements,
-                        list.number * list.size + 1
-                    )
+                    this.list = list.list;
+                    this.pager = list.pager;
+                    this.pager.start++;
                     this.moreOptions = list.moreOptions;
                     this.callbackOnInit();
                 }

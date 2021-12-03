@@ -1,0 +1,90 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="row mt-2">
+                    <div class="col-md-12">
+                        <button type="button" class="btn btn-primary withText" [routerLink]="['/dashboard/invoice/new']">
+                            <ion-icon name="add-circle-outline" class="mr-1"></ion-icon>
+                            {{prefixAction + 'CREATE.TITLE' | translate}}
+                        </button>
+                    </div>
+                </div>
+
+                <div class="row mt-2">
+                    <div class="col-md-12">
+                        <div class="table-responsive mt-3" *ngIf="init">
+                            <perfect-scrollbar>
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">
+                                            <app-sort [field]="'id'" [title]="'ID'"></app-sort>
+                                        </th>
+                                        <th scope="col">
+                                            <app-sort [field]="'createdAt'" [title]="prefix + 'CREATEDAT'"></app-sort>
+                                        </th>
+                                        <th scope="col">{{prefix + 'INVOICENUMBER' | translate}}</th>
+                                        <th scope="col">{{prefix + 'STATE' | translate}}</th>
+                                        <th scope="col">{{prefix + 'WAGONNUMBER' | translate}}</th>
+                                        <th scope="col">{{prefix + 'UNLOADINGSTART' | translate}}</th>
+                                        <th scope="col">{{prefix + 'UNLOADINGERROR' | translate}}</th>
+                                        <th scope="col">{{prefix + 'WEIGHTBEFORE' | translate}}</th>
+                                        <th scope="col">{{prefix + 'WEIGHTAFTER' | translate}}</th>
+                                        <th scope="col">{{prefix + 'WEIGHTCARGO' | translate}}</th>
+                                        <th scope="col">{{prefix + 'WEIGHTACCEPTED' | translate}}</th>
+<!--                                        <th scope="col"-->
+<!--                                            class="text-center">{{prefixAction + 'EDIT.TITLE' | translate}}</th>-->
+                                        <th scope="col"
+                                            class="text-center">{{prefixAction + 'CLOSE.TITLE' | translate}}</th>
+
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr *ngFor="let one of list">
+                                        <td>{{one.id}}</td>
+                                        <td>{{one.createdAt?.format('DD.MM.YYYY HH:mm:ss')}}</td>
+                                        <td>{{one.invoiceNumber}}</td>
+                                        <td>{{'INVOICE.STATES.' + one.state | translate}}</td>
+                                        <td>{{one.wagonNumber}}</td>
+                                        <td>{{one.unloadingStart?.format('DD.MM.YYYY HH:mm:ss')}}</td>
+                                        <td>{{one.unloadingError ? 'X' : '' }}</td>
+                                        <td>{{one.weightBefore}}</td>
+                                        <td>{{one.weightAfter}}</td>
+                                        <td>{{one.weightCargo}}</td>
+                                        <td>{{one.weightAccepted}}</td>
+
+<!--                                        <td class="text-center">-->
+<!--                                            <button type="button" class="btn btn-warning btn-xs"-->
+<!--                                                    [routerLink]="['/dashboard/invoice', one.id]">-->
+<!--                                                <ion-icon name="create-outline"></ion-icon>-->
+<!--                                            </button>-->
+<!--                                        </td>-->
+<!--                                        <td class="text-center">-->
+<!--                                            <button type="button" class="btn btn-danger btn-xs"-->
+<!--                                                    (click)="remove(one.id)">-->
+<!--                                                <ion-icon name="trash"></ion-icon>-->
+<!--                                            </button>-->
+<!--                                        </td>-->
+                                        <td class="text-center">
+                                            <button type="button" class="btn btn-warning btn-xs"
+                                                    *ngIf="one.state == 'UNLOAD' || one.state == 'NONE'"
+                                                    (click)="close(one.id)">
+                                                <i class="iconsminds-close"></i>
+<!--                                                <ion-icon name="trash"></ion-icon>-->
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </perfect-scrollbar>
+                            <ng-template #emptyBlock> -</ng-template>
+                        </div>
+                        <app-pager [pager]="pager" (pageChanged)="changePage($event)"
+                                   (perPageChanged)="changePerPage($event)"></app-pager>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

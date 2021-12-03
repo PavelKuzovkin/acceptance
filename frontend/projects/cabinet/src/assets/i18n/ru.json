@@ -1,4 +1,9 @@
 {
+    "MENU": {
+        "INVOICE": {
+            "TITLE": "Просмтр накладных"
+        }
+    },
     "COMMON": {
         "ACTION": {
             "CANCEL": "Отменить",
@@ -14,6 +19,9 @@
             },
             "EDIT": {
                 "TITLE": "Редактировать"
+            },
+            "CLOSE": {
+                "TITLE": "Закрыть"
             },
             "REMOVE": {
                 "TITLE": "Удалить",
@@ -57,17 +65,21 @@
             "INVOICENUMBER": "Номер",
             "CREATEDAT": "Дата",
             "DRIVERNAME": "Ф.И.О. водителя",
-            "VEHICLENUMBER": "Номер ТС",
+            "UNLOADINGSTART": "Начало разгрузки",
+            "UNLOADINGERROR": "Обнаружен брак",
+            "WAGONNUMBER": "Номер вагона",
             "WEIGHTBEFORE": "Вес на въезде",
             "WEIGHTAFTER": "Вес на выезде",
             "WEIGHTCARGO": "Вес груза",
-            "WEIGHTACCEPTED": "Принято",
+            "WEIGHTACCEPTED": "Вес принятый",
             "STATE": "Статус"
         },
         "STATES": {
-            "ACCEPTED": "Принят",
-            "PARTLY_ACCEPTED": "Частично принят",
-            "REJECTED": "Не принят"
+            "NONE": "Новая",
+            "UNLOAD": "Разгрузка",
+            "ACCEPTED": "Принято",
+            "PARTLY_ACCEPTED": "Частично принято",
+            "REJECTED": "Не принято"
         }
     }
 }
