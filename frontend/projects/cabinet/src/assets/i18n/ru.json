@@ -23,6 +23,9 @@
             "CLOSE": {
                 "TITLE": "Закрыть"
             },
+            "REFRESH": {
+                "TITLE": "Обновить"
+            },
             "REMOVE": {
                 "TITLE": "Удалить",
                 "CONFIRM": "Вы уверены, что хотите удалить запись?",
@@ -66,7 +69,8 @@
             "CREATEDAT": "Дата",
             "DRIVERNAME": "Ф.И.О. водителя",
             "UNLOADINGSTART": "Начало разгрузки",
-            "UNLOADINGERROR": "Обнаружен брак",
+            "UNLOADINGEND": "Окончание разгрузки",
+            "UNLOADINGERROR": "Случаев брака",
             "WAGONNUMBER": "Номер вагона",
             "WEIGHTBEFORE": "Вес на въезде",
             "WEIGHTAFTER": "Вес на выезде",

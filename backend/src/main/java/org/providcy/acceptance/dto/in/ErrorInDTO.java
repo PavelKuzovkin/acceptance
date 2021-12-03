@@ -8,4 +8,9 @@ import lombok.Setter;
 @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ErrorInDTO {
+    private ErrorAreaDTO predictions[];
+    private String base64dataUrl1;
+    private int deviceId = 1;
 }
+
+

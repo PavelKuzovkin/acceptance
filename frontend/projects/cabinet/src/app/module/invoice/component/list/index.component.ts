@@ -1,5 +1,5 @@
 import {ListComponent} from "../../../../../../../tools/src/lib/module/common/component/action/list.component";
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {FormBuilder} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ToastrService} from "ngx-toastr";
@@ -14,7 +14,7 @@ import {IInvoice} from "../../model/invoice";
     selector: 'app-invoice-list',
     templateUrl: './index.component.html'
 })
-export class IndexInvoiceComponent extends ListComponent {
+export class IndexInvoiceComponent extends ListComponent implements OnInit {
     list: IInvoice[] = [];
     prefix = 'INVOICE.FIELD.';
 
@@ -46,7 +46,11 @@ export class IndexInvoiceComponent extends ListComponent {
 
     }
 
-    close(id: number) {
+    ngOnInit(): void {
+        super.ngOnInit();
+    }
 
+    refresh(): void {
+        this.getList();
     }
 }

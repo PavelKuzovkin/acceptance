@@ -21,14 +21,16 @@ public class Invoice {
     private String invoiceNumber;
     private Instant createdAt;
     private String wagonNumber;
+    private int deviceId = 1;
     private Instant unloadingStart;
-    private boolean unloadingError = false;
+    private Instant unloadingEnd;
+    private int unloadingError = 0;
     private int weightBefore = 0;
     private int weightAfter = 0;
     private int weightCargo = 0;
     private int weightAccepted = 0;
 
-    private String unloadingRecord;
+    private String errorRecord;
 
     @Enumerated(EnumType.STRING)
     private InvoiceState state = InvoiceState.NONE;

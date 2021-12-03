@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1638521597510-5" author="pasha (generated)">
+        <dropColumn columnName="unloading_record" tableName="invoices"/>
+
+        <dropColumn columnName="unloading_error" tableName="invoices"/>
+    </changeSet>
+    <changeSet id="1638521597510-3" author="pasha (generated)">
+        <addColumn tableName="invoices">
+            <column name="error_record" type="VARCHAR(255)"/>
+            <column name="unloading_end" type="DATETIME"/>
+            <column name="unloading_error" type="INT"/>
+        </addColumn>
+    </changeSet>
+</databaseChangeLog>

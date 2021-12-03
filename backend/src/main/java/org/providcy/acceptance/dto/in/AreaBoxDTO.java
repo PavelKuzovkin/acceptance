@@ -7,7 +7,11 @@ import lombok.Setter;
 @Getter
 @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class NumberInDTO {
-    private int deviceId = 1;
-    private String number;
+public class AreaBoxDTO {
+    private Double height;
+    private Double left;
+    private Double top;
+    private Double width;
 }
+
+

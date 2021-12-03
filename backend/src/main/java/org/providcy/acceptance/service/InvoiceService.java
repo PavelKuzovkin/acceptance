@@ -65,7 +65,7 @@ public class InvoiceService {
             data.setWeightAccepted(0);
         }
 
-        data.setUnloadingRecord(dto.getUnloadingRecord());
+        data.setErrorRecord(dto.getErrorRecord());
 
         return repository.save(data);
     }

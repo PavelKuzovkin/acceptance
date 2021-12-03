@@ -14,7 +14,8 @@ export interface IInvoice {
     createdAt: Moment | null;
     wagonNumber: string;
     unloadingStart: Moment | null;
-    unloadingError: boolean;
+    unloadingEnd: Moment | null;
+    unloadingError: number;
     weightBefore: number;
     weightAfter: number;
     weightCargo: number;
@@ -30,7 +31,8 @@ export class Invoice implements IInvoice {
         public createdAt: Moment | null = null,
         public wagonNumber: string = '',
         public unloadingStart: Moment | null = null,
-        public unloadingError: boolean = false,
+        public unloadingEnd: Moment | null = null,
+        public unloadingError: number = 0,
         public weightBefore: number = 0,
         public weightAfter: number = 0,
         public weightCargo: number = 0,
@@ -42,7 +44,7 @@ export class Invoice implements IInvoice {
 
     _init(data: IInvoice | null): IInvoice {
         for (const key in data) {
-            if (key === 'createdAt' || key === 'unloadingStart') {
+            if (key === 'createdAt' || key === 'unloadingStart' || key === 'unloadingEnd') {
                 if (data[key]) {
                     this[key] = moment(data[key]);
                 }
