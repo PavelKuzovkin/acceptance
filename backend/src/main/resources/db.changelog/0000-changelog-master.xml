@@ -9,5 +9,6 @@
         <include file="0002-change.xml" relativeToChangelogFile="true"/>
         <include file="0003-change.xml" relativeToChangelogFile="true"/>
         <include file="0004-create-incident.xml" relativeToChangelogFile="true"/>
+        <include file="0005-create-settings.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>

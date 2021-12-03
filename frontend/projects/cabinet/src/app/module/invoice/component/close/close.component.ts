@@ -27,8 +27,6 @@ export class CloseInvoiceComponent extends EditComponent implements OnInit {
         protected toasterService: ToastrService,
         protected fb: FormBuilder,
         protected provider: InvoiceProvider,
-        private service: InvoiceService,
-        private breadcrumbs: BreadcrumbsService,
         protected translate: TranslateService
     ) {
         super(route, router, progress, titleService, toasterService, fb, provider, translate);

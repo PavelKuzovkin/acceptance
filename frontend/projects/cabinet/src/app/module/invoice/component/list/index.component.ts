@@ -29,8 +29,7 @@ export class IndexInvoiceComponent extends ListComponent implements OnInit {
         protected toasterService: ToastrService,
         protected progress: NgProgress,
         protected titleService: Title,
-        protected translate: TranslateService,
-        private breadcrumbs: BreadcrumbsService
+        protected translate: TranslateService
     ) {
         super(fb, router, route, provider, toasterService, progress, titleService, translate);
 
@@ -38,6 +37,7 @@ export class IndexInvoiceComponent extends ListComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        this.getCurrentState();
         super.ngOnInit();
         setInterval(() => {
             this.getList(true);

@@ -5,7 +5,6 @@ import {NgProgress} from "ngx-progressbar";
 import {Title} from "@angular/platform-browser";
 import {ToastrService} from "ngx-toastr";
 import {FormBuilder} from "@angular/forms";
-import {BreadcrumbsService} from "../../../../../../../tools/src/lib/module/common/service/breadcrumbs.service";
 import {TranslateService} from "@ngx-translate/core";
 import {Invoice} from "../../model/invoice";
 import {InvoiceProvider} from "../../provider/invoice.provider";
@@ -26,7 +25,6 @@ export class NewInvoiceComponent extends NewComponent {
         protected fb: FormBuilder,
         protected provider: InvoiceProvider,
         private service: InvoiceService,
-        private breadcrumbs: BreadcrumbsService,
         protected translate: TranslateService,
     ) {
         super(router, progress, titleService, toasterService, fb, provider, translate);

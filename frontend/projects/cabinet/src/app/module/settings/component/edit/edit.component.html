@@ -1,0 +1,44 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body" *ngIf="init">
+                <form *ngIf="form" [formGroup]="form" (ngSubmit)="onSubmit()" novalidate id="userForm"
+                      class="needs-validation tooltip-label-right">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <app-form-checkbox [form]="form" [field]="'stopOnIncident'" [prefix]="prefix" [required]="false"
+                                            [submitted]="submitted"></app-form-checkbox>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <app-form-input [form]="form" [field]="'cleanPercent'" [prefix]="prefix" [required]="false"
+                                            [submitted]="submitted"></app-form-input>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <app-form-input [form]="form" [field]="'partialPercent'" [prefix]="prefix" [required]="false"
+                                            [submitted]="submitted"></app-form-input>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <app-form-input [form]="form" [field]="'badPercent'" [prefix]="prefix" [required]="false"
+                                            [submitted]="submitted"></app-form-input>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-lg-6 mobile-hide">
+                            <button class="btn btn-primary mr-3 withText mobile-hide" type="submit">
+                                <ion-icon name="save-outline"></ion-icon>
+                                {{prefixAction + 'SAVE.TITLE' | translate}}</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
