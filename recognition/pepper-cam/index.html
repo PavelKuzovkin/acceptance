@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Где перец?</title>
+	<!-- Webix Library -->
+	<script type="text/javascript" src="//cdn.webix.com/edge/webix.js"></script>
+	<link rel="stylesheet" type="text/css" href="//cdn.webix.com/edge/webix.css">
+
+	<link rel="stylesheet" href="libs/MaterialDesign-Webfont-master/css/materialdesignicons.min.css">
+
+	<!-- App -->
+	<script type="text/javascript" src="codebase/myapp.js"></script>
+	<link rel="stylesheet" type="text/css" href="codebase/myapp.css">
+	
+	<!--Favicon -->
+	<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+	<link rel="manifest" href="favicon/site.webmanifest">
+	<link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#5bbad5">
+	<meta name="msapplication-TileColor" content="#da532c">
+	<meta name="theme-color" content="#ffffff">
+
+	<script src="libs/tf.min.js"></script>
+	<script src="libs/tf-automl.min.js"></script>
+
+	<script type="text/javascript">
+		webix.ui.fullScreen();
+		let model, timerId, videoDevices;
+		const options = {score: 0.5, iou: 0.5, topk: 20};
+		tf.automl.loadObjectDetection('model.json').then(function (loadedModel) {
+			model = loadedModel;
+		});
+
+		navigator.mediaDevices.enumerateDevices()
+		.then((devices) =>{
+			videoDevices = devices.filter(device => device.kind === 'videoinput');
+			console.log("videoDevices", videoDevices);
+		});
+	</script>
+
+
+</head>
+<body></body>
+</html>

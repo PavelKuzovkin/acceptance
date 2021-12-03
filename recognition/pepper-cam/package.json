@@ -1,0 +1,45 @@
+{
+  "name": "webix-jet-app",
+  "version": "1.1.0",
+  "description": "Webix Jet App",
+  "main": "sources/myapp.js",
+  "scripts": {
+    "test": "mocha-webpack --require tests/setup.js --webpack-config webpack.test.config.js \"tests/**/*.test.js\"",
+    "lint": "eslint sources/",
+    "build": "webpack --env.production true",
+    "module": "webpack --env.production true --env.module true",
+    "standalone": "webpack --env.production true --env.module true --env.standalone true",
+    "start": "webpack-dev-server --open"
+  },
+  "keywords": [
+    "webix",
+    "jet"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "chai": "^4.1.2",
+    "css-loader": "^0.28.7",
+    "eslint": "^4.7.2",
+    "file-loader": "^0.11.2",
+    "jsdom": "^11.6.2",
+    "less": "^2.7.2",
+    "less-loader": "^4.0.5",
+    "mini-css-extract-plugin": "^0.4.0",
+    "mocha": "^5.0.3",
+    "mocha-webpack": "2.0.0-beta.0",
+    "null-loader": "^0.1.1",
+    "url-loader": "^0.5.9",
+    "webpack": "^4.12.1",
+    "webpack-cli": "^3.0.8",
+    "webpack-dev-server": "^3.1.4"
+  },
+  "dependencies": {
+    "webix": "^7.0.0",
+    "webix-jet": "^2.1.2"
+  }
+}

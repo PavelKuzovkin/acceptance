@@ -3,6 +3,7 @@ HELP.md
 build/
 !**/src/main/**
 !**/src/test/**
+!/recognition/pepper-cam/**
 out
 
 ### STS ###
