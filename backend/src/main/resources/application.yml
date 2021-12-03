@@ -18,3 +18,5 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
     show-sql: false
+
+img-save-path: "d:\\0\\img\\"

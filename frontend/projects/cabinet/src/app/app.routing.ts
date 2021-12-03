@@ -6,7 +6,7 @@ export const AppRoutes: Routes = [
     {
         path: 'dashboard', component: MainLayoutComponent,
         children: [
-            {path: 'user', loadChildren: () => import('./module/user/user.module').then(m => m.UserModule)},
+            // {path: 'user', loadChildren: () => import('./module/user/user.module').then(m => m.UserModule)},
             {path: 'invoice', loadChildren: () => import('./module/invoice/invoice.module').then(m => m.InvoiceModule)},
         ]
     },
