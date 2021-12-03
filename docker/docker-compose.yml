@@ -9,8 +9,6 @@ services:
     volumes:
       - ./conf/config.json:/usr/share/nginx/html/assets/config.json
       - ./conf/cabinet.conf:/etc/nginx/conf.d/frontend.conf
-    networks:
-      - frontend
 
 
   backend:
