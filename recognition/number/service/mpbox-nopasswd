@@ -1,0 +1,6 @@
+root ALL=(ALL) NOPASSWD: /bin/systemctl start rumberocr.service
+root ALL=(ALL) NOPASSWD: /bin/systemctl stop rumberocr.service
+root ALL=(ALL) NOPASSWD: /bin/systemctl start rumbertx.service
+root ALL=(ALL) NOPASSWD: /bin/systemctl stop rumbertx.service
+root ALL=(ALL) NOPASSWD: /bin/systemctl start rumbervid.service
+root ALL=(ALL) NOPASSWD: /bin/systemctl stop rumbervid.service

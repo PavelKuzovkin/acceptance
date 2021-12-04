@@ -1,0 +1,18 @@
+[Unit]
+Description=Rumber TX service
+After=syslog.target
+After=network.target
+After=redis.service
+Requires=redis.service
+
+[Service]
+WorkingDirectory=/usr/src/app/
+User=pi
+Group=pi
+Type=idle
+ExecStart=/usr/bin/python3 /usr/src/app/app/ServerTX.py start
+Restart=always
+TimeoutSec=30
+
+[Install]
+WantedBy=multi-user.target

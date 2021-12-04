@@ -5,14 +5,12 @@ __time__ = '11:46'
 __version__ = '1.0'
 
 import logging
+logging.basicConfig(level=logging.INFO)
+log = logging.getLogger('Rumber.Tx')
 
 import requests
 from urpc import uRPC
-
 from app.config import api_key, api_host
-
-logging.basicConfig(level=logging.INFO)
-log = logging.getLogger('Rumber.Tx')
 
 
 def shaping(data):
@@ -37,7 +35,9 @@ def sender(data):
 
 
 class TxServer(uRPC):
-
+    """
+    Сервер обмена сообщениями
+    """
     def worker(self, params):
         if 'number' not in params:
             return {'error': 'Нет нужных параметров!'}

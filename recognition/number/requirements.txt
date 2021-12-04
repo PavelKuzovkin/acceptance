@@ -1,6 +1,7 @@
-redis==4.0.2
+redis==3.5.3
 urpc==0.3.3
-request==2.26.0
+requests==2.26.0
 tensorflow-gpu==2.6.2
 Pillow==8.4.0
 matplotlib==3.3.4
+opencv-python==4.4.0.40

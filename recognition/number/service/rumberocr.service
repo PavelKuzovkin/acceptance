@@ -1,0 +1,21 @@
+[Unit]
+Description=Rumber OCR service
+After=syslog.target
+After=network.target
+After=redis.service
+Requires=redis.service
+Wants=rumbertx.service
+
+[Service]
+WorkingDirectory=/usr/src/app/
+User=pi
+Group=pi
+Type=idle
+ExecStart=/usr/bin/python3 /usr/src/app/app/ServerOCR.py start
+Restart=always
+TimeoutSec=30
+
+
+[Install]
+WantedBy=multi-user.target
+WantedBy=rumbertx.service

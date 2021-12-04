@@ -5,7 +5,6 @@ __time__ = '14:43'
 __version__ = '1.0'
 
 import logging
-
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger('Rumber.Ocr')
 
@@ -13,7 +12,6 @@ import numpy as np
 import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras import layers
-
 from threading import Thread
 from urpc import uRPC, uRPCClientFabric
 from app.config import ocr_path_model, redis_host
@@ -27,8 +25,6 @@ def load_model():
     prediction_model = keras.models.Model(
         prediction_model.get_layer(name="image").input, prediction_model.get_layer(name="dense2").output
     )
-    # prediction_model.load_weights("../ocr/model_ocrFin4.34.h5")
-    # prediction_model.summary()
     log.info('Model is load!')
 
 
@@ -79,6 +75,9 @@ class Sampler:
 
 
 class OCR(Thread):
+    """
+    Класс распознавания номера
+    """
     rpc = uRPCClientFabric(redis_host)
 
     def __init__(self, sample):
@@ -100,7 +99,9 @@ def run_ocr(sample):
 
 
 class OcrServer(uRPC):
-
+    """
+    Сервер обмена сообщениями
+    """
     def worker(self, params):
         if 'sample' in params:
             return {'ok': 200 if run_ocr(params['sample']) else 418}
